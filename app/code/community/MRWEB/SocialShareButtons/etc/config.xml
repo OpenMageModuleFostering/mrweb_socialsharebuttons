@@ -2,7 +2,7 @@
 <config>
     <modules>
         <MRWEB_SocialShareButtons>
-            <version>0.1.0</version>
+            <version>1.1.0</version>
         </MRWEB_SocialShareButtons>
     </modules>
     <frontend>
@@ -22,7 +22,6 @@
                 </socialsharebuttons>
             </updates>
         </layout>
-        
     </frontend>
     <global>
         <models>
@@ -37,22 +36,8 @@
     </helpers>
 	<blocks>
 	  <socialsharebuttons>
-		<class>Helios_SocialShareButtons_Block</class>
+		<class>MRWEB_SocialShareButtons_Block</class>
 	  </socialsharebuttons>
 	</blocks>
     </global>
-    <default>
-        <socialsharebuttonssettings>
-            <general>
-                <text_field>Default value</text_field>
-                <textarea></textarea>
-                <dropdown>ssb_key_1</dropdown>
-                <multiple_dropdown>ssb_key_1,ssb_key_2</multiple_dropdown>
-                <time>11,30,45</time>
-                <active>0</active>
-                <boolean>1</boolean>
-                <dependant_text_field>Default value</dependant_text_field>
-            </general>
-        </socialsharebuttonssettings>
-    </default>
 </config>

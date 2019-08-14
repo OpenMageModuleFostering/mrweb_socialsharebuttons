@@ -26,32 +26,7 @@
      */
     public function indexAction()
     {
-      
       $this->loadLayout();   
-	 /* $this->getLayout()->getBlock("head")->setTitle($this->__("Social Share Buttons"));
-	        $breadcrumbs = $this->getLayout()->getBlock("breadcrumbs");
-      $breadcrumbs->addCrumb("home", array(
-                "label" => $this->__("Home Page"),
-                "title" => $this->__("Home Page"),
-                "link"  => Mage::getBaseUrl()
-		   ));
-
-      $breadcrumbs->addCrumb("titlename", array(
-                "label" => $this->__("Social Share Buttons"),
-                "title" => $this->__("SocialShareButtons")
-		   ));
-*/
       $this->renderLayout(); 
-	  
     }
-    
-    public function testAction()
-    {
-      // $this->loadLayout();
-        //$this->renderLayout();
-
-    }
-      //  echo 		$payEmailTo=Mage::getStoreConfig(MRWEB_SocialShareButtons_Helper_Data::SSB_STATUS);
-    
-    
 }

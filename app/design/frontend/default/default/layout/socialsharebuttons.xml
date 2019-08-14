@@ -2,7 +2,8 @@
 <layout version="0.1.0">
    <default>
 	<reference name="head">		
-		 <action method="addItem"><type>skin_css</type><name>css/socialsharebuttons/socialsharebuttons.css</name></action>	
+		 <action method="addItem"><type>skin_css</type><name>css/socialsharebuttons/socialsharebuttons.css</name></action>
+		 <action method="addItem"><type>skin_js</type><name>js/socialsharebuttons/ssb-custom.js</name></action>	
 	</reference>
     <reference name="footer" >
         <block type="core/template" name="socialsharebuttons" as="socialshare" template="socialsharebuttons/socialsharebuttons.phtml" />

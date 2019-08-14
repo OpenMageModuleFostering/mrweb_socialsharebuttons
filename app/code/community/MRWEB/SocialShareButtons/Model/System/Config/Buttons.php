@@ -1,6 +1,6 @@
 <?php
 
-class MRWEB_SocialShareButtons_Model_System_Config_Source_Dropdown_Buttons
+class MRWEB_SocialShareButtons_Model_System_Config_Buttons
 {
     public function toOptionArray()
     {
