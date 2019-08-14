@@ -1,0 +1,289 @@
+<?php 
+/**
+* get Controller name
+*/
+$ssb_ControllerName=Mage::app()->getRequest()->getControllerName();
+/**
+* get module name
+*/
+$ssb_moduleName=Mage::app()->getRequest()->getModuleName();
+$ssb_hideOnHome=Mage::getStoreConfig(MRWEB_SocialShareButtons_Helper_Data::SSB_SIDEBAR_HIDE_HOME);
+/** check is catalog OR CMS */
+$ssb_condAry=array('cms','catalog');
+if(in_array($ssb_moduleName,$ssb_condAry)):
+
+/** Check condition for buttons to display on home or not*/
+if($ssb_hideOnHome=='0' && $ssb_moduleName=='cms' && $ssb_ControllerName=='index')
+{
+return true;
+exit;
+}
+
+if(Mage::getStoreConfig(MRWEB_SocialShareButtons_Helper_Data::SSB_STATUS)):
+$margin='20%;';$sidebarPosition='left:0;';$sidebarDivid='left';
+$SSB_SIDEBAR_MAIL_URL='';
+$sidebarPositionVal=Mage::getStoreConfig(MRWEB_SocialShareButtons_Helper_Data::SSB_SIDEBAR_POSITION);
+$sidebarDelayTime=Mage::getStoreConfig(MRWEB_SocialShareButtons_Helper_Data::SSB_SIDEBAR_DELAY_TIME);
+$sidebarShowHide=Mage::getStoreConfig(MRWEB_SocialShareButtons_Helper_Data::SSB_SIDEBAR_SHOW_HIDE);
+$topmargin = Mage::getStoreConfig(MRWEB_SocialShareButtons_Helper_Data::SSB_TOP_MARGIN);
+$IsJquery = Mage::getStoreConfig(MRWEB_SocialShareButtons_Helper_Data::SSB_SIDEBAR_JQUERY);
+$SSB_SIDEBAR_MAIL_URL = Mage::getStoreConfig(MRWEB_SocialShareButtons_Helper_Data::SSB_SIDEBAR_MAIL_URL);
+
+if($topmargin!='')
+$margin =$topmargin ;
+
+$ButtonsAry= explode(',',Mage::getStoreConfig(MRWEB_SocialShareButtons_Helper_Data::SSB_SIDEBAR_BUTTONS));
+
+$jscnt='';
+
+if(!$IsJquery):
+$jscnt.=' <script src="'.$this->getSkinUrl('js/socialsharebuttons/jquery-2.1.3.js').'"></script>';
+endif;
+
+$jscnt.='<script type="text/javascript">
+	  var windWidth=jQuery( window ).width();
+	  var animateWidth;
+	  var defaultAnimateWidth;';
+$jscnt.='
+	jQuery(document).ready(function()
+  { 
+	animateWidth="55";
+    defaultAnimateWidth= animateWidth-10;
+	animateHeight="49";
+	defaultAnimateHeight= animateHeight-2;';
+
+if($sidebarDelayTime!=''):
+  $jscnt.='jQuery("#delaydiv").hide();
+	setTimeout(function(){
+	  jQuery("#delaydiv").fadeIn();}, '.$sidebarDelayTime.');'; 
+endif;  
+
+  
+foreach($ButtonsAry as $btnsVal)
+{
+
+if($btnsVal=='tw'):
+  $jscnt.='jQuery("div#ssb_tw a").hover(function(){
+  jQuery("div#ssb_tw a").animate({width:animateWidth});
+  },function(){
+    jQuery("div#ssb_tw a").stop( true, true ).animate({width:defaultAnimateWidth});
+  });';
+  endif;
+  
+ if($btnsVal=='fb'):
+  $jscnt.='jQuery("div#ssb_fb a").hover(function(){
+    jQuery("div#ssb_fb a").animate({width:animateWidth});
+  },function(){
+    jQuery("div#ssb_fb a").stop( true, true ).animate({width:defaultAnimateWidth});
+  });';
+  endif;
+  
+  if($btnsVal=='mail'):
+  $jscnt.='jQuery("div#ssb_ml a").hover(function(){
+    jQuery("div#ssb_ml a").animate({width:animateWidth});
+  },function(){
+    jQuery("div#ssb_ml a").stop( true, true ).animate({width:defaultAnimateWidth});
+  });';
+  endif;
+  
+  if($btnsVal=='gp'):
+  $jscnt.='jQuery("div#ssb_gp a").hover(function(){
+    jQuery("div#ssb_gp a").animate({width:animateWidth});
+  },function(){
+    jQuery("div#ssb_gp a").stop( true, true ).animate({width:defaultAnimateWidth});
+  });';
+  endif;
+  
+  if($btnsVal=='li'):
+  $jscnt.='jQuery("div#ssb_li a").hover(function(){
+    jQuery("div#ssb_li a").animate({width:animateWidth});
+  },function(){
+    jQuery("div#ssb_li a").stop( true, true ).animate({width:defaultAnimateWidth});
+  });';
+  endif;
+  
+   if($btnsVal=='pi'):
+  $jscnt.='jQuery("div#ssb_pin a").hover(function(){
+    jQuery("div#ssb_pin a").animate({width:animateWidth});
+  },function(){
+    jQuery("div#ssb_pin a").stop( true, true ).animate({width:defaultAnimateWidth});
+  });';
+  endif;
+  
+  if($btnsVal=='yt'):
+  $jscnt.='jQuery("div#ssb_yt a").hover(function(){
+    jQuery("div#ssb_yt a").animate({width:animateWidth});
+  },function(){
+    jQuery("div#ssb_yt a").stop( true, true ).animate({width:defaultAnimateWidth});
+  });';
+  endif;
+   if($btnsVal=='re'):
+  $jscnt.='jQuery("div#ssb_re a").hover(function(){
+    jQuery("div#ssb_re a").animate({width:animateWidth});
+  },function(){
+    jQuery("div#ssb_re a").stop( true, true ).animate({width:defaultAnimateWidth});
+  });';
+  endif;
+  
+ if($btnsVal=='st'):
+  $jscnt.='jQuery("div#ssb_st a").hover(function(){
+    jQuery("div#ssb_st a").animate({width:animateWidth});
+  },function(){
+    jQuery("div#ssb_st a").stop( true, true ).animate({width:defaultAnimateWidth});
+  });';
+  endif;
+  
+}  
+ 
+$jscnt.='jQuery("div.ssb_show").hide();
+  jQuery("div.ssb_show a").click(function(){
+    jQuery("div#social-inner").show(500);
+     jQuery("div.ssb_show").hide(500);
+    jQuery("div.ssb_hide").show(500);
+    csbwfsSetCookie("csbwfs_show_hide_status","active","1");
+  });
+  
+  jQuery("div.ssb_hide a").click(function(){
+     jQuery("div.ssb_show").show(500);
+      jQuery("div.ssb_hide").hide(500);
+     jQuery("div#social-inner").hide(500);
+     csbwfsSetCookie("csbwfs_show_hide_status","in_active","1");
+  });';
+  
+$jscnt.='var button_status=csbwfsGetCookie("csbwfs_show_hide_status");
+    if (button_status =="in_active") {
+      jQuery("div.ssb_show").show();
+      jQuery("div.ssb_hide").hide();
+     jQuery("div#social-inner").hide();
+    } else {
+      jQuery("div#social-inner").show();
+     jQuery("div.ssb_show").hide();
+    jQuery("div.ssb_hide").show();
+    }';
+
+  
+$jscnt.='});
+
+</script>';
+	
+echo $jscnt;
+
+/** Get All buttons Image */
+//get facebook button image
+$fImg=$this->getSkinUrl('images/socialsharebuttons/fb.png');
+//get twitter button image  
+$tImg=$this->getSkinUrl('images/socialsharebuttons/tw.png'); 
+//get linkdin button image
+$lImg=$this->getSkinUrl('images/socialsharebuttons/in.png');
+//get mail button image  
+$mImg=$this->getSkinUrl('images/socialsharebuttons/ml.png');
+//get google plus button image 
+$gImg=$this->getSkinUrl('images/socialsharebuttons/gp.png');
+//get pinterest button image   
+$pImg=$this->getSkinUrl('images/socialsharebuttons/pinit.png');
+//get youtube button image
+$ytImg=$this->getSkinUrl('images/socialsharebuttons/youtube.png');
+//get reddit plus button image 
+$reImg=$this->getSkinUrl('images/socialsharebuttons/reddit.png');
+//get stumbleupon button image   
+$stImg=$this->getSkinUrl('images/socialsharebuttons/stumbleupon.png');
+/** Get Title */
+$ShareTitle='';
+if($ssb_ControllerName=='page')
+$ShareTitle=Mage::getSingleton('cms/page')->getTitle();
+
+if($ssb_ControllerName=='category')
+$ShareTitle=Mage::registry('current_category')->getName();
+
+if($ssb_ControllerName=='product')
+$ShareTitle=Mage::registry('current_product')->getName();
+
+/** Get URL */
+$shareurl = Mage::helper('core/url')->getCurrentUrl();
+
+//Sidebar Position
+if($sidebarPositionVal=='right'){
+	$style=' style="top:'.$margin.';right:-5px;"';
+	$idName=' id="ssb_right"';
+	$showImg=$this->getSkinUrl('images/socialsharebuttons/hide.png');
+	$hideImg=$this->getSkinUrl('images/socialsharebuttons/show.png');
+	
+}else if($sidebarPositionVal=='bottom'){
+	$style=' style="bottom:0;"';
+	$idName=' id="ssb_bottom"';
+	$showImg=$this->getSkinUrl('images/socialsharebuttons/hide.png');
+	$hideImg=$this->getSkinUrl('images/socialsharebuttons/show.png');
+	
+	}
+else
+{
+	$idName=' id="ssb_left"';
+	$style=' style="top:'.$margin.';left:0;"';
+    $showImg=$this->getSkinUrl('images/socialsharebuttons/show.png');
+	$hideImg=$this->getSkinUrl('images/socialsharebuttons/hide.png');
+	}
+	
+
+$showbtn='Show Buttons';
+$hidebtn='Hide Buttons';
+$flitingSidebarContent='<div id="delaydiv"><div class="ssb_social-widget" '.$idName.' title="'.$sharemsg.'" '.$style.'>';
+
+if($sidebarShowHide=='0') :
+$flitingSidebarContent .= '<div class="ssb_show"><a href="javascript:" alt="'.$showbtn.'" id="ssb_show"><img src="'.$showImg.'" title="'.$showbtn.'"></a></div>';
+endif;
+
+$flitingSidebarContent .= '<div id="social-inner">';
+
+foreach($ButtonsAry as $btnsVal)
+{
+/** FB */
+if($btnsVal=='fb'):
+$flitingSidebarContent .='<div class="ssb_sbutton"><div id="ssb_fb"><a href="https://www.facebook.com/sharer/sharer.php?u='.$shareurl.'" onclick="javascript:window.open(this.href, \'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600\');return false;" target="_blank" alt="Share on Facebook" > <img src="'.$fImg.'"></a></div></div>';
+endif;
+/** TW */ 
+if($btnsVal=='tw'):
+$flitingSidebarContent .='<div class="ssb_sbutton"><div id="ssb_tw"><a href="javascript:" onclick="window.open(\'http://twitter.com/share?url='.$shareurl.'&text='.$ShareTitle.'\',\'_blank\',\'width=800,height=300\')" alt="Twitter" ><img src="'.$tImg.'"></a></div></div>';
+endif;
+/** GP */   
+if($btnsVal=='gp'):
+$flitingSidebarContent .='<div class="ssb_sbutton"><div id="ssb_gp"><a href="https://plus.google.com/share?url='.$shareurl.'"  onclick="javascript:window.open(this.href,\'\',\'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=800\');return false;" alt="Google Plus" ><img src="'.$gImg.'"></a></div></div>';
+endif;
+/**  LI */
+if($btnsVal=='li'):
+$flitingSidebarContent .='<div class="ssb_sbutton"><div id="ssb_li"><a href="https://www.linkedin.com/cws/share?mini=true&url='. $shareurl.'" onclick="javascript:window.open(this.href,\'\',\'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=800\');return false;" alt="Google Plus" ><img src="'.$lImg.'"></a></div></div>';
+endif;
+/** PIN */  
+if($btnsVal=='pi'):
+$flitingSidebarContent .='<div class="ssb_sbutton"><div id="ssb_pin"><a onclick="window.open(\'http://pinterest.com/pin/create/button/?url='.$shareurl.'&amp;media='.$pinShareImg.'&amp;description='.$ShareTitle.' :'.$shareurl.'\',\'pinIt\',\'toolbar=0,status=0,width=800,height=500\');" href="javascript:void(0);" ><img src="'.$pImg.'"></a></div></div>';
+endif;
+/** YT */	  
+if($btnsVal=='yt'): 	 
+$flitingSidebarContent .='<div class="ssb_sbutton"><div id="ssb_yt"><a onclick="window.open(\''.$pluginOptionsVal['csbwfs_ytPath'].'\');" href="javascript:void(0);" ><img src="'.$ytImg.'"></a></div></div>';
+endif;
+/** Reddit */
+if($btnsVal=='re'):
+$flitingSidebarContent .='<div class="ssb_sbutton"><div id="ssb_re"><a onclick="window.open(\'http://reddit.com/submit?url='.$shareurl.'&amp;title='.$ShareTitle.'\',\'Reddit\',\'toolbar=0,status=0,width=1000,height=800\');" href="javascript:void(0);" ><img src="'.$reImg.'"></a></div></div>';
+endif;
+/** Stumbleupon */ 
+if($btnsVal=='st'): 
+$flitingSidebarContent .='<div class="ssb_sbutton"><div id="ssb_st"><a onclick="window.open(\'http://www.stumbleupon.com/submit?url='.$shareurl.'&amp;title='.$ShareTitle.'\',\'Stumbleupon\',\'toolbar=0,status=0,width=1000,height=800\');"  href="javascript:void(0);" ><img src="'. $stImg.'"></a></div></div>';
+endif; 
+/** Mail*/   
+if($btnsVal=='mail'):
+$flitingSidebarContent .='<div class="ssb_sbutton"><div id="ssb_ml"><a href="'.$SSB_SIDEBAR_MAIL_URL.'" alt="Email" ><img src="'.$mImg.'"></a></div></div>';
+endif;  
+} // End buttons foreach
+
+$flitingSidebarContent .='</div>'; //End social-inner
+
+if($sidebarShowHide=='0') :
+$flitingSidebarContent .='<div class="ssb_hide"><a href="javascript:" alt="'.$hidebtn.'" id="ssb_hide"><img src="'.$hideImg.'" title="'.$hidebtn.'"></a></div>';
+endif;
+
+$flitingSidebarContent .='</div></div>'; //End social-inner
+    
+print $flitingSidebarContent;
+  
+endif;
+endif;
+?>

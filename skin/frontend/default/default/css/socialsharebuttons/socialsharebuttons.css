@@ -1,0 +1,45 @@
+/* Custom share Buttons With Floating Sidebar (C)
+ * Author: Raghunath gurjar
+ * */
+.sbutton img {opacity:0.7;}
+.sbutton img:hover{opacity:1;}
+.ssb_social-widget {position: fixed;width: 50px;z-index: 99999;}
+.ssb_social-widget .ssb_sbutton {background: none;float: right;height: 41px;margin: 0;padding: 0;position: relative;width: 50px;}
+.ssb_sbutton img{padding:5px;}
+.ssb_sbutton a {text-align:center; display:block;  width:45px; height:40px; border-bottom:1px solid rgba(255, 255, 255, 0.1)}
+#ssb_tw a{background:none repeat scroll 0 0 #2CA8D2; }
+#ssb_fb a{background:none repeat scroll 0 0 #305891;}
+#ssb_ml a{background:none repeat scroll 0 0 #738A8D;}
+#ssb_gp a{background:none repeat scroll 0 0 #DD4C39; }
+#ssb_li a{background:none repeat scroll 0 0 #007BB6;}
+#ssb_pin a{background:none repeat scroll 0 0 #ca2027;}
+#ssb_yt a{background:none repeat scroll 0 0 #ffffff;}
+#ssb_re a{background:none repeat scroll 0 0 #FF1A00;}
+#ssb_st a{background:none repeat scroll 0 0 #EB4924;}
+/* Right Position */
+#ssb_right #ssb_re,#ssb_right  #ssb_st,#ssb_right #ssb_yt,#ssb_right  #ssb_ml,#ssb_right #ssb_pin,#ssb_right #ssb_gp,#ssb_right #ssb_tw,#ssb_right #ssb_fb,#ssb_right #ssb_li a {position: absolute; right: 0;}
+#ssb_right a#ssb_hide {padding-right:33px;}
+#ssb_right a#ssb_show {float:right;}
+/* Bottom Position */
+#ssb_bottom #re a, #ssb_bottom #st a ,#ssb_bottom #yt a , #ssb_bottom #ml a,#ssb_bottom #pin a,#ssb_bottom #gp a ,#ssb_bottom #tw a,#ssb_bottom #fb a ,#ssb_bottom #fb a {
+bottom: 0;  height: 45px;  
+}
+#ssb_bottom {width:100%;margin:0 auto; text-align:center; bottom: 0 !important; }
+#ssb_bottom .ssb_hide{display:none !important;}
+#ssb_bottom .ssb_sbutton{background: none repeat scroll 0 0 rgba(0, 0, 0, 0);display: inline-block;float: none;   margin: 0 auto;position: relative;width: 45px;}
+#ssb_bottom .ssb_sbutton img {width: 31px;height: 30px;opacity: 0.7;}
+#ssb_bottom .ssb_sbutton img:hover{opacity:1;}
+/* Custom Share Buttons*/ 
+#socialButtonOnPage {width:100%;display:inline-block;float:left; }
+#socialButtonOnPage .ssb_sbutton-post img {width:31px; height:30px;opacity:0.7; border-radius:3px 3px 3px 3px;box-shadow:0 1px 4px rgba(0, 0, 0, 0.2);}
+#socialButtonOnPage .ssb_sbutton-post img:hover{opacity:1;}
+#socialButtonOnPage .sharethis-arrow span:hover{cursor:pointer;}
+#socialButtonOnPage .sharethis-arrow span{  color: #FFFFFF;display: inline-block;font-size: 16px;font-style: italic;   font-weight: bold;}
+/* Left Position */
+.leftSocialButtonOnPage .ssb_sbutton-post {float:left; padding:5px 1px;}
+.leftSocialButtonOnPage .sharethis-arrow{float:left;padding:5px 10px 5px 1px;background:url("../images/sharethis-l.png") no-repeat scroll 0 0 #ffffff;height: 29px;padding: 0 10px 0 0;margin-top:5px;width: 120px; }
+.leftSocialButtonOnPage .sharethis-arrow span{ padding-left: 12px;}
+/* Right Position */
+.rightSocialButtonOnPage .ssb_sbutton-post {float:right; padding:5px 1px;}
+.rightSocialButtonOnPage .sharethis-arrow{float:right;padding:5px 1px 5px 10px;background:url("../images/sharethis-r.png") no-repeat scroll 0 0 #ffffff;height: 29px;padding: 0 0 0 10px;margin-top:5px;width: 120px; margin-left:5px;}
+.rightSocialButtonOnPage .sharethis-arrow span{padding-left: 12px;}

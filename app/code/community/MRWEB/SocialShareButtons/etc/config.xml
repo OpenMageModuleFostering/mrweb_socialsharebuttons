@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <MRWEB_SocialShareButtons>
+            <version>0.1.0</version>
+        </MRWEB_SocialShareButtons>
+    </modules>
+    <frontend>
+        <routers>
+            <mrweb>      <!-- I make this match my front name but I'm not sure it matters -->
+                <use>standard</use> <!-- Use standard routing as opposed to admin.  IE: frontend vs admin -->
+                <args>
+                    <module>MRWEB_SocialShareButtons</module>  <!-- The module to search for controllers -->
+                    <frontName>socialsharebuttons</frontName> <!-- The first descriminator in the path.  "spinonesolutions" in http://localhost/spinonesolutions/ -->
+                </args>
+            </mrweb>
+        </routers>
+        <layout>
+            <updates>
+                <socialsharebuttons module="MRWEB_SocialShareButtons">
+                    <file>socialsharebuttons.xml</file>
+                </socialsharebuttons>
+            </updates>
+        </layout>
+        
+    </frontend>
+    <global>
+        <models>
+            <mrweb_socialsharebuttons>
+                <class>MRWEB_SocialShareButtons_Model</class>
+            </mrweb_socialsharebuttons>
+        </models>
+    <helpers>
+      <socialsharebuttons>
+        <class>MRWEB_SocialShareButtons_Helper</class>
+      </socialsharebuttons>
+    </helpers>
+	<blocks>
+	  <socialsharebuttons>
+		<class>Helios_SocialShareButtons_Block</class>
+	  </socialsharebuttons>
+	</blocks>
+    </global>
+    <default>
+        <socialsharebuttonssettings>
+            <general>
+                <text_field>Default value</text_field>
+                <textarea></textarea>
+                <dropdown>ssb_key_1</dropdown>
+                <multiple_dropdown>ssb_key_1,ssb_key_2</multiple_dropdown>
+                <time>11,30,45</time>
+                <active>0</active>
+                <boolean>1</boolean>
+                <dependant_text_field>Default value</dependant_text_field>
+            </general>
+        </socialsharebuttonssettings>
+    </default>
+</config>

@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/MRWEB_SocialShareButtons",
+    "type": "magento-module",
+    "license": "GNU-General-Public-License-(-GPL-)",
+    "homepage": "",
+    "description": "Add Social Share Buttons Using Floating Sidebar On Your Site(Facebook,Twitter,Linkedin,Google+,Pinterest,Youtube,Mail,Stumbleupon,Reddit)",
+    "authors": [
+    {
+        "name": "Raghunath",
+        "email": "raghunath.0087@gmail.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
