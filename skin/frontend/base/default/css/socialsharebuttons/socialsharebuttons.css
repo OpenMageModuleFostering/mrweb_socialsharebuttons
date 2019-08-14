@@ -19,7 +19,7 @@
 /* Right Position */
 #ssb_right #ssb_re,#ssb_right  #ssb_st,#ssb_right #ssb_yt,#ssb_right  #ssb_ml,#ssb_right #ssb_pin,#ssb_right #ssb_gp,#ssb_right #ssb_tw,#ssb_right #ssb_fb,#ssb_right #ssb_li a {position: absolute; right: 0;}
 #ssb_right a#ssb_hide {padding-right:33px;}
-#ssb_right a#ssb_show {float:right;}
+#ssb_right a#ssb_show {float:right;}#ssb_left .ssb_show {float:left;}
 /* Bottom Position */
 #ssb_bottom #re a, #ssb_bottom #st a ,#ssb_bottom #yt a , #ssb_bottom #ml a,#ssb_bottom #pin a,#ssb_bottom #gp a ,#ssb_bottom #tw a,#ssb_bottom #fb a ,#ssb_bottom #fb a {
 bottom: 0;  height: 45px;  

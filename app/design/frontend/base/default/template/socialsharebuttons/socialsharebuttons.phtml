@@ -10,7 +10,7 @@ $ssb_ControllerName=Mage::app()->getRequest()->getControllerName();
 $ssb_moduleName=Mage::app()->getRequest()->getModuleName();
 $ssb_hideOnHome=Mage::getStoreConfig(MRWEB_SocialShareButtons_Helper_Data::SSB_SIDEBAR_HIDE_HOME);
 $ssb_hideOnMobile=Mage::getStoreConfig(MRWEB_SocialShareButtons_Helper_Data::SSB_MOB_DISABLE);
-echo $HideOnMobile=mage::helper('socialsharebuttons')->ssbIsMobile();
+$HideOnMobile=mage::helper('socialsharebuttons')->ssbIsMobile();
 
 /** Check condition for buttons to display on mobile or not*/
 if($ssb_hideOnMobile=='1' && $HideOnMobile!='')
@@ -49,7 +49,7 @@ $ButtonsAry= explode(',',Mage::getStoreConfig(MRWEB_SocialShareButtons_Helper_Da
 
 $jscnt='';
 
-if(!$IsJquery):
+if($IsJquery):
 $jscnt.=' <script src="'.$this->getSkinUrl('js/socialsharebuttons/jquery-2.1.3.js').'"></script>';
 endif;
 
@@ -140,15 +140,15 @@ if($btnsVal=='tw'):
  
 $jscnt.='jQuery("div.ssb_show").hide();
   jQuery("div.ssb_show a").click(function(){
-    jQuery("div#social-inner").show(500);
-     jQuery("div.ssb_show").hide(500);
-    jQuery("div.ssb_hide").show(500);
+    jQuery("div#social-inner").show();
+     jQuery("div.ssb_show").hide();
+    jQuery("div.ssb_hide").show();
     ssbwfsSetCookie("ssbwfs_show_hide_status","active","1");
   });
   jQuery("div.ssb_hide a").click(function(){
-     jQuery("div.ssb_show").show(500);
-      jQuery("div.ssb_hide").hide(500);
-     jQuery("div#social-inner").hide(500);
+     jQuery("div.ssb_show").show();
+      jQuery("div.ssb_hide").hide();
+     jQuery("div#social-inner").hide();
      ssbwfsSetCookie("ssbwfs_show_hide_status","in_active","1");
   });';
 $jscnt.='var button_status=ssbwfsGetCookie("ssbwfs_show_hide_status");
